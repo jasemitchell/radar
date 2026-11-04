@@ -42,8 +42,8 @@ int main()
     {
         long Ir { std::clamp(std::lround(x[n].real() * scale), -32768L, 32767L) };
         long Qr { std::clamp(std::lround(x[n].imag() * scale), -32768L, 32767L) };
-        auto I  { static_cast<uint16_t>(Ir) };
-        auto Q  { static_cast<uint16_t>(Qr) };
+        auto I  { static_cast<int16_t>(Ir) };
+        auto Q  { static_cast<int16_t>(Qr) };
 
         uint32_t word { (uint32_t(uint16_t(Q)) << 16) | uint16_t(I) };
         std::fprintf(stim, "%08X\n", word);
