@@ -34,11 +34,29 @@ int main()
         return 1;
     }
 
-    std::size_t peakExp = 0, peakOut = 0;
-    for (std::size_t k = 1; k < output.size(); ++k)
+    std::size_t peakExp {}, peakOut {}, maxErrorBin {};
+    double maxError {};
+    for (std::size_t k = 0; k < output.size(); ++k)
     {
         if (std::abs(expected[k]) > std::abs(expected[peakExp])) peakExp = k;
         if (std::abs(output[k])   > std::abs(output[peakOut]))   peakOut = k;
+        double error = std::abs(expected[k] - output[k]);
+        if (error > maxError)
+        {
+            maxError = error;
+            maxErrorBin = k;
+        }
+    }
+
+    double spur {};
+    std::size_t spurBin {};
+    for (std::size_t k = 0; k < output.size(); ++k)
+    {
+        if (std::abs(output[k]) > spur && k != peakOut)
+        {
+            spur = std::abs(output[k]);
+            spurBin = k;
+        }
     }
 
     double signalPower {}, errorPower {};
@@ -53,6 +71,8 @@ int main()
     std::cout << "Peak bin  output:   " << peakOut << "  |X| = " << std::abs(output[peakOut])   << "\n";
     std::cout << (peakExp == peakOut ? "PEAK MATCH\n" : "PEAK MISMATCH\n");
     std::cout << "Peak difference: " << std::abs(expected[peakExp]) - std::abs(output[peakOut]) << "\n";
+    std::cout << "Maximum error: " << maxError << " at bin " << maxErrorBin << "\n";
+    std::cout << "Maximum spurious signal: " << spur << " at bin " << spurBin << "\n";
     std::cout << "SQNR: " << sqnr_db << "\n";
     return 0;
 }
