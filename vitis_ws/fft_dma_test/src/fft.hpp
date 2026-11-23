@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <vector>
 
-std::vector<std::complex<double>> fft(std::vector<std::complex<double>> x)
+inline std::vector<std::complex<double>> fft(std::vector<std::complex<double>> x)
 {
     const std::size_t N = x.size();
     if (N == 0 || (N & (N - 1)) != 0) 

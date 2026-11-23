@@ -9,7 +9,7 @@
 // x[n] = sum_i A_i * exp(j*(2*pi*f_i*n/fs + phi_i)) + complex Gaussian noise.
 // I = real part, Q = imaginary part, as the K-LC5 I/Q outputs would give.
 
-std::vector<std::complex<double>> makeTones(double amplitude, double fs, double freq, 
+inline std::vector<std::complex<double>> makeTones(double amplitude, double fs, double freq, 
     double phase_rad, std::size_t N, double noise, unsigned seed) 
 {
     const double pi { 3.14159265358979323846 };
