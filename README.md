@@ -32,37 +32,32 @@ My year-3 project: a 24 GHz FMCW radar front end with the signal processing runn
 ├── hw/                      Vivado sources
 │   ├── bd/system.tcl        Block design (exported with write_bd_tcl)
 │   ├── rtl/ADC_formatter.sv XADC → FFT AXI-Stream formatter
-│   └── export/system.xsa    Exported hardware platform (with bitstream)
+│   └── export/system.xsa    Exported hardware platform, including the bitstream
 ├── fft/                     Host-side C++ model and comparison
 │   ├── fft.hpp              Recursive radix-2 decimation-in-time FFT
 │   ├── signalGen.hpp        Complex tone and noise generator (I/Q, as from the K-LC5)
 │   ├── gen_vectors.cpp      Writes the FFT input (stimulus.hex) and the expected output (expected.txt)
 │   ├── compare_fft.cpp      Compares expected.txt with the FFT core's output (ip_output.txt)
 │   └── Makefile
-├── scripts/build_hw.tcl     One-command Vivado rebuild
 └── vitis_ws/                Vitis workspace
     ├── pynq_platform/       Platform (standalone BSP and FSBL) generated from the XSA
     └── fft_dma_test/        Bare-metal application for the hardware FFT test
 ```
 
-## Rebuilding the hardware
+## Hardware sources
 
-Requirements: **Vivado 2026.1** (`system.tcl` refuses to run in other versions) and the [PYNQ-Z2 board files](https://github.com/Xilinx/XilinxBoardStore) installed.
+`hw/` holds copies of the Vivado design files, exported from Vivado 2026.1:
 
-From the repo root:
+- `hw/bd/system.tcl`: the block design, exported with `write_bd_tcl`
+- `hw/rtl/ADC_formatter.sv`: the formatter RTL
+- `hw/export/system.xsa`: the exported hardware platform, including the bitstream, from which the Vitis platform in `vitis_ws/pynq_platform` was built
 
-```sh
-vivado -mode batch -source scripts/build_hw.tcl          # add "-tclargs 8" for 8 parallel jobs
-```
-
-The script creates `build/vivado/radar.xpr` for the `xc7z020clg400-1` part. It adds `ADC_formatter.sv` first, because the block design uses it as an RTL module and `system.tcl` fails without it. It then sources `hw/bd/system.tcl`, generates the HDL wrapper, runs implementation to the bitstream, and exports `build/vivado/radar.xsa`.
-
-To do it by hand in the Vivado GUI instead: create a PYNQ-Z2 project, add `hw/rtl/ADC_formatter.sv`, run `source hw/bd/system.tcl` in the Tcl console, right-click the design and choose *Create HDL Wrapper*, generate the bitstream, then use *File → Export → Export Hardware* (include the bitstream).
+To recreate the design, create a PYNQ-Z2 (`xc7z020clg400-1`) project in Vivado 2026.1, add `ADC_formatter.sv`, and run `source hw/bd/system.tcl` in the Tcl console. The formatter has to be added first, because the block design uses it as an RTL module.
 
 ## Building and running the Vitis app
 
 1. Open `vitis_ws/` as the workspace in the Vitis unified IDE (2026.1).
-2. Build the `pynq_platform` component, then `fft_dma_test`. If you've rebuilt the hardware, first point the platform at the new XSA under *Switch XSA*.
+2. Build the `pynq_platform` component, then `fft_dma_test`. If the hardware has changed, first point the platform at the new XSA under *Switch XSA*.
 3. Connect the PYNQ-Z2 by USB, set its boot jumper to JTAG, and open a serial terminal on the board's USB-UART (usually 115200 baud).
 4. Run `fft_dma_test` on hardware. The app programs the FPGA, sends a 512-sample test tone through the FFT core by DMA, and prints:
 
