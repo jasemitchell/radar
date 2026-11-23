@@ -1,0 +1,8 @@
+[
+{
+  "directory": "D:/radar/vitis_ws/fft_dma_test/build",
+  "command": "D:\\Vivado\\2026.1\\Vitis\\gnu\\aarch32\\nt\\gcc-arm-none-eabi\\bin\\arm-none-eabi-g++.exe -ID:/radar/vitis_ws/fft_dma_test/src -isystem D:/radar/vitis_ws/pynq_platform/export/pynq_platform/sw/standalone_ps7_cortexa9_0/include -isystem D:/Vivado/2026.1/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.4.0/include -isystem D:/Vivado/2026.1/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/13.4.0/include-fixed -isystem D:/Vivado/2026.1/Vitis/gnu/aarch32/nt/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include/c++/13.4.0 -isystem D:/Vivado/2026.1/Vitis/gnu/aarch32/nt/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include/c++/13.4.0/arm-xilinx-eabi/thumb/v7-a+fp/hard -isystem D:/Vivado/2026.1/Vitis/gnu/aarch32/nt/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include/c++/13.4.0/backward -isystem D:/Vivado/2026.1/Vitis/gnu/aarch32/nt/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include  -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=D:/radar/vitis_ws/pynq_platform/export/pynq_platform/sw/standalone_ps7_cortexa9_0/Xilinx.spec -ID:/radar/vitis_ws/pynq_platform/export/pynq_platform/sw/standalone_ps7_cortexa9_0/include -Wall -Wextra      -O0  -g3     -U__clang__ -o CMakeFiles\\fft_dma_test.elf.dir\\main.cpp.obj -c D:\\radar\\vitis_ws\\fft_dma_test\\src\\main.cpp",
+  "file": "D:\\radar\\vitis_ws\\fft_dma_test\\src\\main.cpp",
+  "output": "CMakeFiles\\fft_dma_test.elf.dir\\main.cpp.obj"
+}
+]
