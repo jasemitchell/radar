@@ -12,7 +12,7 @@ fft/compare
 /*.log
 
 # Vitis build output, regenerated on every build (files Vitis reads stay tracked)
-vitis_ws/_ide/workspace_journal.py
+vitis_ws/_ide/workspace_journal*.py
 vitis_ws/pynq_platform/zynq_fsbl/build/
 vitis_ws/**/CMakeFiles/
 vitis_ws/**/CMakeCache.txt
