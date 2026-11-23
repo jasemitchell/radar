@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"D:/radar/vitis_ws/pynq_platform/zynq_fsbl/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

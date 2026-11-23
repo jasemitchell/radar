@@ -1,4 +1,0 @@
-D:/radar/vitis_ws/pynq_platform/zynq_fsbl/build/CMakeFiles/fsbl.elf.dir
-D:/radar/vitis_ws/pynq_platform/zynq_fsbl/build/CMakeFiles/print_build_info.dir
-D:/radar/vitis_ws/pynq_platform/zynq_fsbl/build/CMakeFiles/edit_cache.dir
-D:/radar/vitis_ws/pynq_platform/zynq_fsbl/build/CMakeFiles/rebuild_cache.dir

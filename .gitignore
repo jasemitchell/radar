@@ -10,3 +10,17 @@ fft/compare
 /.Xil/
 /*.jou
 /*.log
+
+# Vitis build output, regenerated on every build (files Vitis reads stay tracked)
+vitis_ws/_ide/workspace_journal.py
+vitis_ws/pynq_platform/zynq_fsbl/build/
+vitis_ws/**/CMakeFiles/
+vitis_ws/**/CMakeCache.txt
+vitis_ws/**/cmake_install.cmake
+vitis_ws/**/build.ninja
+vitis_ws/**/.ninja_deps
+vitis_ws/**/.ninja_log
+vitis_ws/**/-.d
+vitis_ws/**/compile_commands.json
+vitis_ws/**/.cache/
+vitis_ws/**/.Xil/
