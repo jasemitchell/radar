@@ -1,2 +1,12 @@
 .DS_Store
+
+# Host-side build outputs (fft/Makefile)
+fft/gen_vectors
 fft/compare
+
+# Vivado build output (scripts/build_hw.tcl) and stray tool files at the root
+/build/
+/myproj/
+/.Xil/
+/*.jou
+/*.log
